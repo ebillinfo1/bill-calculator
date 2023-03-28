@@ -1,0 +1,83 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Bill Calculator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+		.container {
+			width: 80%;
+			max-width: 600px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+		input[type="number"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.2);
+			font-size: 16px;
+		}
+		button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		button:hover {
+			background-color: #3e8e41;
+		}
+		.result {
+			margin-top: 20px;
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.2);
+			background-color: #eee;
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Bill Calculator</h1>
+		<form>
+			<label for="subtotal">Subtotal</label>
+			<input type="number" id="subtotal" placeholder="Enter subtotal amount">
+			<label for="tip">Tip (%)</label>
+			<input type="number" id="tip" placeholder="Enter tip percentage">
+			<button type="button" onclick="calculate()">Calculate</button>
+		</form>
+		<div class="result" id="result"></div>
+	</div>
+	<script>
+		function calculate() {
+			// Get input values
+			let subtotal = document.getElementById('subtotal').value;
+			let tip = document.getElementById('tip').value;
+			// Calculate tip amount and total
+			let tipAmount = subtotal * (tip/100);
+			let total = Number(subtotal) + Number(tipAmount);
+			// Update result display
+			let result = document.getElementById('result');
+			result.innerHTML = `Tip Amount: $${tipAmount.toFixed(2)}<br>Total: $${total.toFixed(2)}`;
+		}
+	</script>
+</body>
+</html>
